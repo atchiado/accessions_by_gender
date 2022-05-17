@@ -18,3 +18,15 @@ male_access <- access %>%
                  filter(Gender == "Male")
 female_access <- access %>%
                    filter(Gender == "Female")
+
+
+# Data Viz
+ggplot(access) +
+  geom_segment(data = male_access,
+               aes(x = Accessions, y = Year,
+                   yend = female_access$Year, xend = female_access$Accessions),
+               color = "#aeb6bf",
+               size = 4.5,
+               alpha = 0.5) +
+  geom_point(aes(x = Accessions, y = Year, color = Gender), size = 4, show.legend = TRUE) +
+  ggtitle("Total Army 56A Accession Trends")
