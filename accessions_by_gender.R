@@ -19,6 +19,22 @@ male_access <- access %>%
 female_access <- access %>%
                    filter(Gender == "Female")
 
+stats <- access %>%
+           group_by(Gender) %>%
+           summarise(mean = mean(Accessions),
+                     SE = sd(Accessions)) %>%
+           mutate(meanpos = mean + 1*SE,
+                  meanneg = mean - 1*SE)
+
+stats_male <- stats %>%
+                filter(Gender == "Male")
+stats_female <- stats %>%
+                  filter(Gender == "Female")
+
+diff <- access %>%
+          filter(Gender == "Male") %>%
+          mutate(x_pos = Accessions + (diff/2))
+
 
 # Data Viz
 ggplot(access) +
