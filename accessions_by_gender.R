@@ -41,11 +41,11 @@ ggplot(access) +
   geom_rect(xmin = stats_male$meanneg, xmax = stats_male$meanpos,
             ymin = 2021, ymax = 2006, fill = "#00bfc4", alpha = 0.1) +
   geom_vline(xintercept = stats_male$mean, linetype = "solid",
-             size = 0.5, alpha = 0.5, color = "#00bfc4") +
+             size = 0.5, alpha = 0.7, color = "#00bfc4") +
   geom_rect(xmin = stats_female$meanneg, xmax = stats_female$meanpos,
             ymin = 2021, ymax = 2006, fill = "#f8766d", alpha = 0.1) +
   geom_vline(xintercept = stats_female$mean, color = "#f8766d", linetype = "solid",
-             size = 0.5, alpha = 0.5) +
+             size = 0.5, alpha = 0.7) +
   geom_segment(data = male_access,
                aes(x = Accessions, y = Year,
                    yend = female_access$Year, xend = female_access$Accessions),
@@ -59,9 +59,9 @@ ggplot(access) +
             fill = "white",
             color = "#4a4e4d",
             size = 2.5) +
-  geom_text(x = stats_male$mean - 1, y = 2006, label = "MEAN",
+  geom_text(x = stats_male$mean - 1.5, y = 2006, label = "MEAN",
             angle = 90, size = 2.5, color = "#00bfc4") +
-  geom_text(x = stats_male$meanpos - 1, y = 2006, label = "STDEV",
+  geom_text(x = stats_male$meanpos - 1.5, y = 2006, label = "STDEV",
             angle = 90, size = 2.5, color = "#00bfc4") +
   facet_grid(Year ~ ., scales = "free", switch = "y") +
   ggtitle("56A Accessions Trends") +
