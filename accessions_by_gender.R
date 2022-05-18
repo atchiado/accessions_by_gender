@@ -1,6 +1,7 @@
 library(tidyverse)
 library(ggtext)
 library(extrafont)
+loadfonts(device = "win", quiet = TRUE)
 
 
 ## Load Data
@@ -39,11 +40,11 @@ diff <- access %>%
 # Data Viz
 ggplot(access) +
   geom_rect(xmin = stats_male$meanneg, xmax = stats_male$meanpos,
-            ymin = 2021, ymax = 2006, fill = "#00bfc4", alpha = 0.1) +
+            ymin = 2022, ymax = 2005, fill = "#00bfc4", alpha = 0.1) +
   geom_vline(xintercept = stats_male$mean, linetype = "solid",
              size = 0.5, alpha = 0.7, color = "#00bfc4") +
   geom_rect(xmin = stats_female$meanneg, xmax = stats_female$meanpos,
-            ymin = 2021, ymax = 2006, fill = "#f8766d", alpha = 0.1) +
+            ymin = 2022, ymax = 2005, fill = "#f8766d", alpha = 0.1) +
   geom_vline(xintercept = stats_female$mean, color = "#f8766d", linetype = "solid",
              size = 0.5, alpha = 0.7) +
   geom_segment(data = male_access,
@@ -55,14 +56,15 @@ ggplot(access) +
   geom_point(aes(x = Accessions, y = Year, color = Gender), size = 4, show.legend = FALSE) +
     scale_color_manual(values = c("#f8766d", "#00bfc4")) +
   geom_text(data = diff,
-            aes(label = paste("D: ", diff), x = x_pos, y = Year),
+            aes(label = paste("Δ: ", diff), x = x_pos, y = Year),
             fill = "white",
             color = "#4a4e4d",
             size = 2.5) +
+  scale_x_continuous(limits = c(50, 150)) +
   geom_text(x = stats_male$mean - 1.5, y = 2006, label = "MEAN",
-            angle = 90, size = 2.5, color = "#00bfc4") +
+            angle = 90, size = 2, color = "#00bfc4") +
   geom_text(x = stats_male$meanpos - 1.5, y = 2006, label = "STDEV",
-            angle = 90, size = 2.5, color = "#00bfc4") +
+            angle = 90, size = 2, color = "#00bfc4") +
   facet_grid(Year ~ ., scales = "free", switch = "y") +
   ggtitle("56A Accessions Trends") +
   theme_minimal() +
@@ -85,6 +87,6 @@ ggplot(access) +
   labs(subtitle = "<span style = 'color: #00bfc4;'>**Male**</span> and <span style = 'color: #f8766d;'>**Female**</span> Total Army Accessions from 2006 to 2021<br>",
        caption = "Plot by Anthony Chiado") +
   theme(plot.caption = element_markdown(hjust = 0, lineheight = 1.5),
-        plot.subtitle = element_markdown(size = 14, hjust = -.32),
-        plot.title = element_text(size = 16, hjust = -.06))
+        plot.subtitle = element_markdown(size = 14, hjust = -0.6),
+        plot.title = element_text(size = 16, hjust = -.1))
 
