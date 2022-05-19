@@ -57,7 +57,7 @@ ggplot(access) +
     scale_color_manual(values = c("#f8766d", "#00bfc4")) +
   geom_text(data = diff,
             aes(label = paste("Δ: ", diff), x = x_pos, y = Year),
-            fill = "white",
+            fill = "grey98",
             color = "#4a4e4d",
             size = 2.5) +
   scale_x_continuous(limits = c(50, 150)) +
@@ -78,10 +78,10 @@ ggplot(access) +
         axis.ticks.x = element_line(color = "#4a4e4d"),
         text = element_text(color = "#4a4e4d"),
         strip.text.y.left = element_text(angle = 0),
-        panel.background = element_rect(fill = "white", color = "white"),
-        strip.background = element_rect(fill = "white", color = "white"),
+        panel.background = element_rect(fill = "grey98", color = "grey98"),
+        strip.background = element_rect(fill = "grey98", color = "grey98"),
         strip.text = element_text(color = "#4a4e4d"),
-        plot.background = element_rect(fill = "white", color = "white"),
+        plot.background = element_rect(fill = "grey98", color = "grey98"),
         panel.spacing = unit(0, "lines"),
         plot.margin = margin(1,1,0.5,1, "cm")) +
   labs(subtitle = "<span style = 'color: #00bfc4;'>**Male**</span> and <span style = 'color: #f8766d;'>**Female**</span> Total Army Accessions from 2006 to 2021<br>",
